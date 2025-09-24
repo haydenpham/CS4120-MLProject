@@ -1,0 +1,5 @@
+# Ignore dataset files
+
+test.csv
+train.csv
+sample_submission.csv
