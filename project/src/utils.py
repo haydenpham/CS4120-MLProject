@@ -27,8 +27,8 @@ def classify_price(price):
     low = 139000
     high = 191000
     if price <= low:
-        return 'low'
+        return '0'
     elif price >= high:
-        return 'high'
+        return '2'
     else:
-        return 'medium'
+        return '1'
