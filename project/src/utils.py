@@ -19,13 +19,16 @@ def load_and_calculate_percentiles():
 
     return int(percentile_33), int(percentile_67)
 
-def classify_price(price, percentile_33, percentile_67):
+def classify_price(price):
     """
     Classify the given price into 'low', 'medium', or 'high' based on the provided percentiles.
     """
-    if price <= percentile_33:
+    # found in load_and_calculate_percentiles()
+    low = 139000
+    high = 191000
+    if price <= low:
         return 'low'
-    elif price <= percentile_67:
-        return 'medium'
-    else:
+    elif price >= high:
         return 'high'
+    else:
+        return 'medium'
