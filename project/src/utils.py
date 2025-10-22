@@ -32,3 +32,17 @@ def classify_price(price):
         return '2'
     else:
         return '1'
+
+def classify_price_text(price):
+    """
+    Classify the given price into 'low', 'medium', or 'high' based on the provided percentiles.
+    """
+    # found in load_and_calculate_percentiles()
+    low = 139000
+    high = 191000
+    if price <= low:
+        return 'Low'
+    elif price >= high:
+        return 'High'
+    else:
+        return 'Medium'
