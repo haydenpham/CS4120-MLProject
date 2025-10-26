@@ -26,9 +26,9 @@ def classify_price(price):
     # found in load_and_calculate_percentiles()
     low = 139000
     high = 191000
-    if price <= low:
+    if price < low:
         return '0'
-    elif price >= high:
+    elif price > high:
         return '2'
     else:
         return '1'
