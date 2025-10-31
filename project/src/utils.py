@@ -19,7 +19,7 @@ def load_and_calculate_percentiles():
 
     return int(percentile_33), int(percentile_67)
 
-def classify_price(price):
+def classify_price_into_3(price):
     """
     Classify the given price into 'low', 'medium', or 'high' based on the provided percentiles.
     """
@@ -46,3 +46,29 @@ def classify_price_text(price):
         return 'High'
     else:
         return 'Medium'
+
+
+def classify_price(price, median_price=None):
+    """
+    Binary classification: above-median price classification.
+
+    Parameters:
+    -----------
+    price : float
+        The sale price of the house
+    median_price : float, optional
+        Median price for classification. If None, must be set externally.
+
+    Returns:
+    --------
+    int
+        0 for below median, 1 for above median
+    """
+    if median_price is None:
+        raise ValueError("median_price must be provided for classification")
+
+    return 1 if price >= median_price else 0
+
+
+def get_median_price(df, price_column='SalePrice'):
+    return df[price_column].median()
