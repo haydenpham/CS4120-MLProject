@@ -2,9 +2,6 @@ import pandas as pd
 
 file_path = "../data/train.csv"
 
-# For the classification task, we want to divide the SalePrice column in our dataset
-# into 3 groups: low (bottom 33%), medium (mid 33%), and high (top 33%)
-
 # We now need to find the 33rd and 67th percentiles of the data
 def load_and_calculate_percentiles():
     """
@@ -51,18 +48,7 @@ def classify_price_text(price):
 def classify_price(price, median_price=None):
     """
     Binary classification: above-median price classification.
-
-    Parameters:
-    -----------
-    price : float
-        The sale price of the house
-    median_price : float, optional
-        Median price for classification. If None, must be set externally.
-
-    Returns:
-    --------
-    int
-        0 for below median, 1 for above median
+    0 for below median, 1 for above median
     """
     if median_price is None:
         raise ValueError("median_price must be provided for classification")
