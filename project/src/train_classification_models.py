@@ -287,6 +287,7 @@ def print_summary(nb_metrics, lr_metrics):
 
 
 def main():
+    print('\n\n\n Starting Regression Models Training \n\n\n')
     setup_mlflow()
 
     X, y, median_price = load_and_engineer_features("data/train.csv", random_state=RNG)
@@ -305,6 +306,12 @@ def main():
     lr_metrics = train_logistic_regression(X_train, X_test, y_train, y_test, preprocessor)
 
     print_summary(nb_metrics, lr_metrics)
+
+    # used in summary in train_baselines.py
+    return {
+        'naive_bayes': nb_metrics,
+        'logistic_regression': lr_metrics
+    }
 
 
 if __name__ == "__main__":
