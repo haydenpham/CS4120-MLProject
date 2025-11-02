@@ -24,7 +24,10 @@ def setup_mlflow(experiment_name="classification_models"):
     mlflow_tracking_uri = os.path.join(os.path.dirname(os.getcwd()), 'mlruns')
     print(f"MLflow tracking URI: {mlflow_tracking_uri}")
     # Change to \\ on Windows
-    mlflow.set_tracking_uri(f"file://{mlflow_tracking_uri}")
+    if os.name == 'nt':
+        mlflow.set_tracking_uri(f"file:\\{mlflow_tracking_uri}")
+    else:
+        mlflow.set_tracking_uri(f"file://{mlflow_tracking_uri}")
     mlflow.end_run()
     mlflow.set_experiment(experiment_name)
 
