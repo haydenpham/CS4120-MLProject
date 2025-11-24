@@ -1,12 +1,13 @@
-from sklearn.metrics import classification_report
-
 from train_regression_nn import train_regression_nn
 
 from train_classification_nn import train_classification_nn
 
 
 def main():
+    print('Training Regression MLP...\n')
     regression_metrics = train_regression_nn()
+    print('\n\nTraining Classification MLP...\n')
+    classification_metrics = train_classification_nn()
 
     print("\n" + "-"*40)
     print("REGRESSION NN - FINAL RESULTS")
@@ -20,8 +21,6 @@ def main():
     print(f"MAE: {regression_metrics['test_mae']:.2f}")
     print(f"R²: {regression_metrics['test_r2']:.4f}")
     print("-"*40)
-
-    classification_metrics = train_classification_nn()
 
     print("\n" + "-"*40)
     print("CLASSIFICATION NN - FINAL RESULTS")
