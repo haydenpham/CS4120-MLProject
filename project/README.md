@@ -12,3 +12,7 @@ https://upeica-my.sharepoint.com/:w:/g/personal/bpham16267_upei_ca/ESS7UAwptkxKs
 # Final Report Link
 https://upeica-my.sharepoint.com/:w:/g/personal/bpham16267_upei_ca/EYAVSxzdm4REvcCHTe83Q5cBMS50Tj8bczueOrQmWC9apA?email=cnjones%40upei.ca&e=hPdW6g
 
+# Poster
+https://upeica-my.sharepoint.com/:p:/g/personal/bpham16267_upei_ca/EaosHupns2NBgFgbhGUXObMB_y96Tt1TpbezL6Ir86qu8g?email=cnjones%40upei.ca&e=e2qohB
+
+
