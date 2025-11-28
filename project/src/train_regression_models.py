@@ -123,7 +123,7 @@ def main():
 
 
     # Use SelectFromModel with stricter threshold to select fewer features
-    selector = SelectFromModel(feature_selector, threshold='0.5*median', prefit=True, max_features=30)
+    selector = SelectFromModel(feature_selector, threshold='0.2*median', prefit=True, max_features=60)
     X_selected = selector.transform(X)
 
     selected_features_mask = selector.get_support()
@@ -136,20 +136,6 @@ def main():
 
     # Update X to use only selected features
     X = pd.DataFrame(X_selected, columns=selected_features, index=X.index)
-
-    print("\nRemoving outliers based on sale price...")
-    Q1 = y.quantile(0.25)
-    Q3 = y.quantile(0.75)
-    IQR = Q3 - Q1
-    lower_bound = Q1 - 1.5 * IQR
-    upper_bound = Q3 + 1.5 * IQR
-
-    outlier_mask = (y >= lower_bound) & (y <= upper_bound)
-    X = X[outlier_mask]
-    y = y[outlier_mask]
-    print(f"Removed {(~outlier_mask).sum()} outliers")
-    print(f"Remaining samples: {len(X)}")
-
 
     # Step 4: Train-Test Split (80-20, random_state=42)
 
@@ -305,7 +291,7 @@ def main():
     # Step 8: Ridge Regression Learning Curve with RMSE
     with mlflow.start_run(run_name="Ridge_Regression"):
         mlflow.log_param("model_type", "Ridge")
-        mlflow.log_param("cv_folds", 4)
+        mlflow.log_param("cv_folds", 5)
         mlflow.log_param("test_size", 0.2)
         mlflow.log_param("random_state", 42)
         mlflow.log_params({f"best_{k}": v for k, v in grid_search_lr.best_params_.items()})
